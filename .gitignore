@@ -4,5 +4,6 @@ _site
 etc
 bin
 *.swp
-.cache
+_cache
 node_modules
+.tern-port

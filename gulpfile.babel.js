@@ -55,7 +55,7 @@ const JEKYLL_BUILD_CMD = [
   '-v',
   `${PWD}:/srv/jekyll`,
   '-v',
-  `${PWD}/.cache/bundle:/usr/local/bundle`,
+  `${PWD}/_cache/bundle:/usr/local/bundle`,
   '-it',
   `jekyll/jekyll:${JEKYLL_VERSION}`,
   'jekyll',
@@ -129,5 +129,5 @@ function reload(done) {
 // Watch for changes to static sass files
 function watch() {
   gulp.watch(PATHS.src + '/**/*.scss').on('all', sass);
-  gulp.watch(`{${PWD}/**/*.md,${PWD}/assets/**/*}`).on('all', gulp.series(jekyll, browser.reload));
+  gulp.watch(['./**/*.md', '!./node_modules/**', '!./_*/**']).on('all', gulp.series(jekyll, browser.reload));
 }
