@@ -4,3 +4,5 @@ _site
 etc
 bin
 *.swp
+.cache
+node_modules
