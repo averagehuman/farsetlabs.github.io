@@ -1,12 +1,12 @@
 'use strict';
 
-import plugins       from 'gulp-load-plugins';
-import yargs         from 'yargs';
-import browser       from 'browser-sync';
-import gulp          from 'gulp';
-import log           from 'fancy-log';
-import rimraf        from 'rimraf';
-import child_process         from 'child_process';
+import plugins        from 'gulp-load-plugins';
+import yargs          from 'yargs';
+import browser        from 'browser-sync';
+import gulp           from 'gulp';
+import log            from 'fancy-log';
+import rimraf         from 'rimraf';
+import child_process  from 'child_process';
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -59,7 +59,8 @@ const JEKYLL_BUILD_CMD = [
   '-it',
   `jekyll/jekyll:${JEKYLL_VERSION}`,
   'jekyll',
-  'build'
+  'build',
+  '--incremental'
 ];
 
 // Check for --production flag
@@ -87,7 +88,7 @@ function clean(done) {
 // Compile Sass into CSS
 // In production, the CSS is compressed
 function sass() {
-  return gulp.src(PATHS.src + '/app.scss')
+  return gulp.src(PATHS.src + '/voltaic.scss')
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       includePaths: PATHS.includePaths
@@ -99,7 +100,7 @@ function sass() {
     // Comment in the pipe below to run UnCSS in production
     //.pipe($.if(PRODUCTION, $.uncss(UNCSS_OPTIONS)))
     .pipe($.if(PRODUCTION, $.cleanCss({ compatibility: 'ie9' })))
-    .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+    //.pipe($.if(!PRODUCTION, $.sourcemaps.write()))
     .pipe(gulp.dest(PATHS.dest))
     .pipe(browser.reload({ stream: true }));
 }
@@ -129,5 +130,12 @@ function reload(done) {
 // Watch for changes to static sass files
 function watch() {
   gulp.watch(PATHS.src + '/**/*.scss').on('all', sass);
-  gulp.watch(['./**/*.md', '!./node_modules/**', '!./_*/**']).on('all', gulp.series(jekyll, browser.reload));
+  gulp.watch([
+    './**/*.md',
+    './**/*.html',
+    './assets/**/*',
+    '!./node_modules/**/*',
+    '!./.git/**/*',
+    '!./_site/**/*'
+  ]).on('all', gulp.series(jekyll, browser.reload));
 }

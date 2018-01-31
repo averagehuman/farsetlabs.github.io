@@ -5,10 +5,9 @@
 @import 'motion-ui';
 
 @include foundation-global-styles;
-// @include foundation-grid;
+@include foundation-grid;
 // @include foundation-flex-grid;
-//
-@include foundation-xy-grid-classes;
+// @include foundation-xy-grid-classes;
 @include foundation-typography;
 @include foundation-button;
 @include foundation-forms;
@@ -29,7 +28,7 @@
 @include foundation-responsive-embed;
 @include foundation-label;
 @include foundation-media-object;
-@include foundation-off-canvas;
+// @include foundation-off-canvas;
 @include foundation-orbit;
 @include foundation-pagination;
 @include foundation-progress-bar;
@@ -44,10 +43,48 @@
 @include foundation-tooltip;
 @include foundation-top-bar;
 @include foundation-visibility-classes;
-// @include foundation-float-classes;
-@include foundation-flex-classes;
+@include foundation-float-classes;
+// @include foundation-flex-classes;
 
 // @include foundation-prototype-classes;
 
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+.banner {
+    background-color: lighten($theme-secondary-color, 30%);
+    .hdr {
+        font-size: 2.2rem;
+        margin-bottom: 0.1rem;
+    }
+    .menu.icons {
+        li > a {
+            padding: 1rem 0.7rem 0.2rem;
+            > i {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+.top-bar {
+    > * > .menu {
+        a {
+            font-size: 90%;
+            color: lighten($theme-secondary-color, 20%);
+            padding: 0.6rem 1rem;
+        }
+        a:hover, li.is-current > a:hover {
+            color: scale-color($theme-secondary-color, $lightness: -14%);
+        }
+        li.is-current > a {
+            color: $white;
+        }
+        > li {
+            //border-bottom: solid 3px transparent;
+            border-right: solid 1px $white;
+        }
+        > li.is-current {
+            //border-bottom: solid 3px $theme-secondary-color;
+        }
+    }
+}
