@@ -51,10 +51,25 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
+.fsl-purple-darker {
+    //color: darken($theme-secondary-color, 10%);
+    color: $theme-primary-color;
+    font-style: italic;
+    text-shadow: 1px 1px 1px darken($theme-primary-color, 20%);
+}
+.fsl-green-darker {
+    //color: darken($theme-secondary-color, 10%);
+    color: $theme-secondary-color;
+    font-style: italic;
+    text-shadow: 1px 1px 1px darken($theme-secondary-color, 20%);
+}
 .banner {
-    background-color: lighten($theme-secondary-color, 30%);
+    background-color: lighten($theme-secondary-color, 40%);
+    background-image: url(/assets/img/banner.png);
+    background-repeat: repeat-x repeat-y;
+    padding-top: 0.2rem;
     .hdr {
-        font-size: 2.2rem;
+        font-size: 2.0rem;
         margin-bottom: 0.1rem;
     }
     .menu.icons {
@@ -66,25 +81,72 @@
         }
     }
 }
-.top-bar {
-    > * > .menu {
-        a {
-            font-size: 90%;
-            color: lighten($theme-secondary-color, 20%);
-            padding: 0.6rem 1rem;
+.site-nav {
+    background-color: $topbar-background;
+    .top-bar {
+        max-width: $grid-container-max;
+        margin-right: auto;
+        margin-left: auto;
+        > * > .menu {
+            a {
+                font-size: 80%;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: lighten($theme-secondary-color, 30%);
+                padding: 0.6rem 1rem;
+            }
+            a:hover, li.is-current > a:hover {
+                color: scale-color($theme-secondary-color, $lightness: -14%);
+            }
+            li.is-current > a {
+                color: $white;
+            }
+            > li {
+                //border-bottom: solid 3px transparent;
+                //border-right: solid 1px $white;
+            }
+            > li.is-current {
+                //border-bottom: solid 3px $theme-secondary-color;
+            }
         }
-        a:hover, li.is-current > a:hover {
-            color: scale-color($theme-secondary-color, $lightness: -14%);
-        }
-        li.is-current > a {
-            color: $white;
-        }
-        > li {
-            //border-bottom: solid 3px transparent;
-            border-right: solid 1px $white;
-        }
-        > li.is-current {
-            //border-bottom: solid 3px $theme-secondary-color;
-        }
+    }
+}
+.content {
+    position: relative;
+}
+.orbit-container {
+    max-height: 540px;
+}
+.carousel-caption-overlay {
+    width: 100%;
+    position: absolute;
+    top: -180px;
+    left: 0px;
+    background-color: rgba(20, 20, 20, 0.7);
+    padding: 12px 18px;
+    @media screen and (max-width: 640px) {
+        top: -160px;
+    }
+
+}
+.carousel-caption {
+    max-width: $grid-container-max;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: $white;
+    a, a:visited {
+        color: skyblue;
+        text-decoration: underline;
+    }
+    a:hover {
+        color: lighten($theme-primary-color, 20%);
+    }
+    @media screen and (max-width: 640px) {
+         font-size: 1.1rem;
+    }
+    @media screen and (max-width: 520px) {
+         font-size: 0.9rem;
     }
 }

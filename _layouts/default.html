@@ -58,102 +58,93 @@
     <!-- banner -->
     <div class="banner">
         <div class="row">
-            <div class="small-6 columns">
-                <h1 class="hdr"><a href="/"><span class="fsl-purple">Farset</span><span class="fsl-green">Labs</span><small class="subheader"> BELFAST</small></a></h1>
-            </div>
-            <div class="small-6 columns">
-                <ul class="menu icons float-right">
-                  <li><a href="//www.github.com/{{site.social.github}}" rel="publisher"><i class="social foundicon-github"></i></a></li>
-                  <li><a href="//www.twitter.com/{{site.social.twitter}}" rel="publisher"><i class="social foundicon-twitter"></i></a></li>
-                  <li><a href="//www.facebook.com/{{site.social.facebook}}" rel="publisher"><i class="social foundicon-facebook"></i></a></li>
-                  <li><a href="https://plus.google.com/+{{site.social.gplus}}" rel="publisher"><i class="social foundicon-google-plus"></i></a></li>
-                  <li><a href="//www.flickr.com/{{site.social.flickr}}"><i class="social foundicon-flickr"></i></a></li>
-                  <li><a href={{site.social.blogfeed}}><i class="social foundicon-rss"></i></a></li>
-                  <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-                </ul>
+            <div class="small-12 columns">
+                <h1 class="hdr"><a href="/"><span class="fsl-purple-darker">Farset</span><span class="fsl-green-darker">Labs</span><small class="subheader"> BELFAST</small></a></h1>
             </div>
         </div>
          <a href="https://github.com/FarsetLabs/farsetlabs.github.io/" class="hide-for-small-only"><img style="position:absolute;top:0;right:0;border:0;z-index:5000" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork us on GitHub"></a>
     </div>
     <!-- end banner -->
-    <!-- topbar -->
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <ul class="dropdown menu" data-dropdown-menu>
-                <li{% if page.url == "/" %} class="is-current"{% endif %}>
-                    <a href="{{site.base}}/">Home</a>
-                </li>
-                {% assign sorted_pages = site.pages | sort:"name" %}
-                  {% for weight in (1..10) %}
-                    {% for p in sorted_pages %}
-                      {% if p.category == "nav" and p.weight == weight %}
-                      <li{% if p.url == page.url %} class="is-current"{% endif %}>
-                        {% if p.haschildren %}
-                          <a href="{{ p.url }}">
-                              {{ p.title }}
-                            </a>
+    <!-- site-nav -->
+    <nav class="site-nav">
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li{% if page.url == "/" %} class="is-current"{% endif %}>
+                        <a href="{{site.base}}/">Home</a>
+                    </li>
+                    {% assign sorted_pages = site.pages | sort:"name" %}
+                      {% for weight in (1..10) %}
+                        {% for p in sorted_pages %}
+                          {% if p.category == "nav" and p.weight == weight %}
+                          <li{% if p.url == page.url %} class="is-current"{% endif %}>
+                            {% if p.haschildren %}
+                              <a href="{{ p.url }}">
+                                  {{ p.title }}
+                                </a>
+                              <ul class="menu vertical">
+                                {% for i_weight in (1..10) %}
+                                  {% for child in sorted_pages |  sort:"name" %}
+                                    {% if child.parent == p.title and child.weight == i_weight %}
+                                      <li><a href={{child.url}}>{{child.title}}</a></li>
+                                    {% endif %}
+                                  {% endfor %}
+                                {% endfor %}
+                                {% for child in sorted_pages |  sort:"name" %}
+                                  {% if child.parent == p.title and child.weight == None %}
+                                    <li><a href={{child.url}}>{{child.title}}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+                              </ul>
+                            {% else %}
+                              <a href="{{ p.url }}">
+                                {% if p.icon %}<i class="{{p.icon}}"></i>{% endif %}
+                                {{ p.title }}
+                              </a>
+                            {% endif %}
+                            </li>
+                          {% endif %}
+                        {% endfor %}
+                      {% endfor %}
+
+                      {% for link in site.links %}
+                        <li{% if link.url == page.url %} class="is-current"{% endif %}>
+                        {% if link.list %}
+                          <a href="#">{{link.name}}</a>
                           <ul class="menu vertical">
-                            {% for i_weight in (1..10) %}
-                              {% for child in sorted_pages |  sort:"name" %}
-                                {% if child.parent == p.title and child.weight == i_weight %}
-                                  <li><a href={{child.url}}>{{child.title}}</a></li>
-                                {% endif %}
-                              {% endfor %}
-                            {% endfor %}
-                            {% for child in sorted_pages |  sort:"name" %}
-                              {% if child.parent == p.title and child.weight == None %}
-                                <li><a href={{child.url}}>{{child.title}}</a></li>
-                              {% endif %}
+                            {% for item in link.list %}
+                            <li><a href={{item.url}}>{{item.name}}</a></li>
                             {% endfor %}
                           </ul>
-                        {% else %}
-                          <a href="{{ p.url }}">
-                            {% if p.icon %}<i class="{{p.icon}}"></i>{% endif %}
-                            {{ p.title }}
-                          </a>
+                          {% else %}
+                          <a href={{link.url}}>{{link.name}}</a>
                         {% endif %}
                         </li>
-                      {% endif %}
-                    {% endfor %}
-                  {% endfor %}
 
-                  {% for link in site.links %}
-                    <li{% if link.url == page.url %} class="is-current"{% endif %}>
-                    {% if link.list %}
-                      <a href="#">{{link.name}}</a>
-                      <ul class="menu vertical">
-                        {% for item in link.list %}
-                        <li><a href={{item.url}}>{{item.name}}</a></li>
-                        {% endfor %}
-                      </ul>
-                      {% else %}
-                      <a href={{link.url}}>{{link.name}}</a>
-                    {% endif %}
-                    </li>
-
-                  {% endfor %}
-            </ul>
-        </div>
-    </div>
-    <!-- end topbar -->
-
-        <section id="page-content" class="content">
-          {% if page.carousel %}
-          <div class="row">
-            <div class="flex-container">
-              <div class="flexslider">
-                <ul class="slides">
-                  {% for slides in page.carousel %}
-                  <li>
-                  <img src="{{ slides.image }}">
-                  </li>
-                  {% endfor %}
+                      {% endfor %}
                 </ul>
-              </div>
             </div>
+        </div>
+    </nav>
+    <!-- end site-nav -->
+
+          {% if page.carousel %}
+          <div class="orbit" role="region" aria-label="Photo Carousel" data-orbit>
+              <div class="orbit-wrapper">
+                  <ul class="orbit-container">
+                      {% for slides in page.carousel %}<li class="{% if forloop.first %}is-active {% endif %}orbit-slide">
+                          <figure class="orbit-figure">
+                              <img class="orbit-image" src="{{ slides.image }}">
+                          </figure>
+                      </li>
+                      {% endfor %}
+                        
+                  </ul>
+              </div>
           </div>
           {% endif %}
 
+        <section id="page-content" class="content">
             <div class="row">
                 <div class="small-12 columns">
                   {% if page.toc %}
