@@ -105,11 +105,23 @@ function sass() {
     .pipe(browser.reload({ stream: true }));
 }
 
+var building = false;
+
 function jekyll() {
-  var proc = child_process.spawn(JEKYLL_BUILD_CMD[0], JEKYLL_BUILD_CMD.slice(1), {stdio: 'inherit'});//
-  proc.on('data', (data) => log.info(data));
-  //proc.on('error', (error) => log.error(error));
-  //proc.on('close', () => log.info("done jekyll"));
+  if (building) {
+    log.warn("Jekyll build in progress.");
+    return;
+  }
+  building = true;
+  var proc = child_process.spawn(JEKYLL_BUILD_CMD[0], JEKYLL_BUILD_CMD.slice(1), {stdio: 'inherit'});
+  proc.on('error', (error) => {
+    building = false;
+    log.error(error);
+  });
+  proc.on('close', () => {
+    building = false;
+    log.info("done jekyll");
+  });
   return proc;
 }
 
