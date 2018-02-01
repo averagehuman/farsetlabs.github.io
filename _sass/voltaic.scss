@@ -114,39 +114,53 @@
 .content {
     position: relative;
 }
-.orbit-container {
-    max-height: 540px;
-}
-.carousel-caption-overlay {
-    width: 100%;
-    position: absolute;
-    top: -180px;
-    left: 0px;
-    background-color: rgba(20, 20, 20, 0.7);
-    padding: 12px 18px;
-    @media screen and (max-width: 640px) {
-        top: -160px;
-    }
 
-}
 .carousel-caption {
-    max-width: $grid-container-max;
-    margin-right: auto;
-    margin-left: auto;
-    font-size: 1.3rem;
-    font-style: italic;
-    color: $white;
-    a, a:visited {
-        color: skyblue;
-        text-decoration: underline;
+    display: none;
+    height: 0;
+}
+
+.flexslider {
+    border: 0;
+
+    .slides {
+        img {
+            max-height: 540px;
+            object-fit: cover;
+            object-position: 0 0;
+        }
+        .flex-caption {
+            width: 100%;
+            padding: 12px 4%;
+            position: absolute;
+            bottom: 0;
+            min-height: 130px;
+            background: rgba(0,0,0,.7);
+            color: #fff;
+            font-size: 1.3rem;
+            font-style: italic;
+            text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+
+            a, a:visited {
+                color: lighten($theme-secondary-color, 10%);
+                text-decoration: underline;
+            }
+            a:hover {
+                color: darken($theme-secondary-color, 10%);
+            }
+            @media screen and (max-width: 640px) {
+                font-size: 1.1rem;
+                min-height: 100px;
+            }
+            @media screen and (max-width: 520px) {
+                 font-size: 0.9rem;
+            }
+        }
     }
-    a:hover {
-        color: lighten($theme-primary-color, 20%);
-    }
-    @media screen and (max-width: 640px) {
-         font-size: 1.1rem;
-    }
-    @media screen and (max-width: 520px) {
-         font-size: 0.9rem;
+    .flex-direction-nav {
+        display: none;
+        * {
+            display: none;
+        }
     }
 }

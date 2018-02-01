@@ -47,11 +47,13 @@
     <link rel="stylesheet" href="{{site.base}}/assets/css/general_foundicons.css">
     <link rel="stylesheet" href="{{site.base}}/assets/css/social_foundicons.css">
     <link rel="stylesheet" href="{{site.base}}/assets/css/accessibility_foundicons.css">
+    {% if page.carousel %}<link rel="stylesheet" href="{{site.base}}/assets/css/flexslider.css">{% endif %}
     <link rel="stylesheet" href="{{site.base}}/assets/css/voltaic.css">
     <link rel="stylesheet" href="{{site.base}}/assets/css/fsl-style.css">
 
-    <script src="/assets/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/what-input-4.2.0.js"></script>
+    {% if page.carousel %}<script src="{{site.base}}/assets/js/jquery.flexslider.js"></script>{% endif %}
     {% include google_analytics.html %}
 </head>
 <body>
@@ -129,18 +131,11 @@
     <!-- end site-nav -->
 
           {% if page.carousel %}
-          <div class="orbit" role="region" aria-label="Photo Carousel" data-orbit>
-              <div class="orbit-wrapper">
-                  <ul class="orbit-container">
-                      {% for slides in page.carousel %}<li class="{% if forloop.first %}is-active {% endif %}orbit-slide">
-                          <figure class="orbit-figure">
-                              <img class="orbit-image" src="{{ slides.image }}">
-                          </figure>
-                      </li>
-                      {% endfor %}
-                        
-                  </ul>
-              </div>
+          <div class="flexslider" role="region" aria-label="Photo Carousel">
+              <ul class="slides">
+                  {% for slide in page.carousel %}<li><img src="{{ slide.image }}"></li>
+                  {% endfor %}
+              </ul>
           </div>
           {% endif %}
 
