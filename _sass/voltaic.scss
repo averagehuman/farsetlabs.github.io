@@ -63,6 +63,47 @@
     font-style: italic;
     text-shadow: 1px 1px 1px darken($theme-secondary-color, 20%);
 }
+
+html, body {
+    height:100%;
+}
+#page-wrapr {
+    min-height:100%;
+    position:relative;
+}
+#page-hdr {
+    padding:0;
+    margin: 0;
+}
+#page-body {
+    padding: 0;
+    padding-bottom:500px;
+}
+#page-footr {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:460px;
+    padding: 0.8rem 0;
+    background: darken($theme-primary-color, 30%);
+    color: $white;
+    a, a:visited {
+        color: $theme-secondary-color;
+    }
+    a:hover {
+        color: lighten($theme-secondary-color, 10%);
+        text-decoration: underline;
+    }
+    p {
+        padding-top: 0.9rem;
+    }
+    .icon-menu {
+        a {
+            font-size: 1.6rem;
+        }
+    }
+}
+
 .banner {
     background-color: lighten($theme-secondary-color, 40%);
     background-image: url(/assets/img/banner.png);
@@ -88,7 +129,8 @@
         margin-right: auto;
         margin-left: auto;
         > * > .menu {
-            a {
+            z-index: 1000;
+            a, a:visited {
                 font-size: 80%;
                 font-weight: bold;
                 text-transform: uppercase;
@@ -161,6 +203,48 @@
         display: none;
         * {
             display: none;
+        }
+    }
+}
+
+.cards {
+    .column {
+        margin-bottom: 1rem;
+    }
+    .card {
+        position: relative;
+        height: 100%;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+        .card-hdr {
+            background-color: $theme-primary-color;
+            color: $white;
+            :first-child {
+                width: 100%;
+            }
+        }
+        
+        .card-section {
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .card-footr {
+            position: absolute;
+            bottom: 0;
+            height: 63px;
+            width: 100%;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            .button, .button:visited {
+                display: block;
+                width: 90%;
+                margin: 1.6rem auto 1rem;
+                background-color: $theme-secondary-color;
+                border-radius: 4px;
+            }
+            .button:hover {
+                background-color: darken($theme-secondary-color, 10%);
+            }
         }
     }
 }

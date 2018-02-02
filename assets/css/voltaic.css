@@ -4750,6 +4750,39 @@ a.thumbnail {
   font-style: italic;
   text-shadow: 1px 1px 1px #5e7e22; }
 
+html, body {
+  height: 100%; }
+
+#page-wrapr {
+  min-height: 100%;
+  position: relative; }
+
+#page-hdr {
+  padding: 0;
+  margin: 0; }
+
+#page-body {
+  padding: 0;
+  padding-bottom: 500px; }
+
+#page-footr {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 460px;
+  padding: 0.8rem 0;
+  background: #0d0e24;
+  color: #fefefe; }
+  #page-footr a, #page-footr a:visited {
+    color: #99ca3c; }
+  #page-footr a:hover {
+    color: #aed564;
+    text-decoration: underline; }
+  #page-footr p {
+    padding-top: 0.9rem; }
+  #page-footr .icon-menu a {
+    font-size: 1.6rem; }
+
 .banner {
   background-color: #edf6dc;
   background-image: url(/assets/img/banner.png);
@@ -4769,16 +4802,18 @@ a.thumbnail {
     max-width: 75rem;
     margin-right: auto;
     margin-left: auto; }
-    .site-nav .top-bar > * > .menu a {
-      font-size: 80%;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #d8ebb4;
-      padding: 0.6rem 1rem; }
-    .site-nav .top-bar > * > .menu a:hover, .site-nav .top-bar > * > .menu li.is-current > a:hover {
-      color: #85b130; }
-    .site-nav .top-bar > * > .menu li.is-current > a {
-      color: #fefefe; }
+    .site-nav .top-bar > * > .menu {
+      z-index: 1000; }
+      .site-nav .top-bar > * > .menu a, .site-nav .top-bar > * > .menu a:visited {
+        font-size: 80%;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #d8ebb4;
+        padding: 0.6rem 1rem; }
+      .site-nav .top-bar > * > .menu a:hover, .site-nav .top-bar > * > .menu li.is-current > a:hover {
+        color: #85b130; }
+      .site-nav .top-bar > * > .menu li.is-current > a {
+        color: #fefefe; }
 
 .content {
   position: relative; }
@@ -4820,3 +4855,35 @@ a.thumbnail {
     display: none; }
     .flexslider .flex-direction-nav * {
       display: none; }
+
+.cards .column, .cards .columns {
+  margin-bottom: 1rem; }
+
+.cards .card {
+  position: relative;
+  height: 100%;
+  margin-bottom: 1rem;
+  border-radius: 4px; }
+  .cards .card .card-hdr {
+    background-color: #353895;
+    color: #fefefe; }
+    .cards .card .card-hdr :first-child {
+      width: 100%; }
+  .cards .card .card-section {
+    padding-bottom: 20px;
+    margin-bottom: 30px; }
+  .cards .card .card-footr {
+    position: absolute;
+    bottom: 0;
+    height: 63px;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px; }
+    .cards .card .card-footr .button, .cards .card .card-footr .button:visited {
+      display: block;
+      width: 90%;
+      margin: 1.6rem auto 1rem;
+      background-color: #99ca3c;
+      border-radius: 4px; }
+    .cards .card .card-footr .button:hover {
+      background-color: #7ca62d; }

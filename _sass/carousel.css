@@ -1,0 +1,36 @@
+
+/*
+.carousel-caption-overlay {
+    width: 100%;
+    position: absolute;
+    top: -180px;
+    left: 0px;
+    background-color: rgba(20, 20, 20, 0.7);
+    padding: 12px 18px;
+    @media screen and (max-width: 640px) {
+        top: -160px;
+    }
+
+}
+.carousel-caption {
+    max-width: $grid-container-max;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: $white;
+    a, a:visited {
+        color: skyblue;
+        text-decoration: underline;
+    }
+    a:hover {
+        color: lighten($theme-primary-color, 20%);
+    }
+    @media screen and (max-width: 640px) {
+         font-size: 1.1rem;
+    }
+    @media screen and (max-width: 520px) {
+         font-size: 0.9rem;
+    }
+}
+*/
