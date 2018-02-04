@@ -134,21 +134,22 @@ html, body {
                 font-size: 80%;
                 font-weight: bold;
                 text-transform: uppercase;
-                color: lighten($theme-secondary-color, 30%);
+                color: $white;
                 padding: 0.6rem 1rem;
             }
             a:hover, li.is-current > a:hover {
                 color: scale-color($theme-secondary-color, $lightness: -14%);
             }
             li.is-current > a {
-                color: $white;
+                //color: scale-color($theme-secondary-color, $lightness: -14%);
+                border-bottom: solid 3px $white;
             }
             > li {
                 //border-bottom: solid 3px transparent;
                 //border-right: solid 1px $white;
             }
             > li.is-current {
-                //border-bottom: solid 3px $theme-secondary-color;
+                //border-bottom: solid 3px $white;
             }
         }
     }
@@ -167,7 +168,7 @@ html, body {
 
     .slides {
         img {
-            max-height: 540px;
+            max-height: 680px;
             object-fit: cover;
             object-position: 0 0;
         }

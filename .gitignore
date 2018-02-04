@@ -7,3 +7,4 @@ bin
 _cache
 node_modules
 .tern-port
+.jekyll-metadata
