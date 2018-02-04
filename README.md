@@ -55,6 +55,25 @@ Please leave at least a brief description of what the changes are, and detail
 any changes made to layout or the functionality of the website.
 
 
+## Voltaic Theme
+
+To develop and build the proposed theme update (voltaic) requires both docker
+and npm (nodejs package manager). Supposing that these are both installed run:
+
+    $ npm install
+
+This installs gulp, sass and associated javascript dependencies.
+
+Then
+
+    $ npm start
+
+This compiles assets, runs a jekyll build (via docker) and watches source files
+for changes so that the compile/build steps are run automatically on subsequent
+edits. Then the site is opened in a browser with live-reload enabled, ie. the
+browser refreshes automatically whenever new files are added or existing files
+are updated.
+
 [bootstrap]: http://getbootstrap.com/
 [farsetlabs]: https://farsetlabs.org.uk/
 [feature-branch-workflow]: https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow
