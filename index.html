@@ -12,6 +12,7 @@ image: /assets/img/carousels/frontpage/slide1.jpg
         <a href="{{site.base}}/about/">Read more about us!</a>
     </div>
 
+<section class="quick-links">
 <div class="cards row small-up-1 medium-up-2 large-up-4" data-equalizer="get-involved" data-equalize-by-row="true">
     <div class="column" data-equalizer-watch>
         <div class="card">
@@ -74,15 +75,21 @@ image: /assets/img/carousels/frontpage/slide1.jpg
     </div>
 
 </div>
-<div class="row upcoming-events">
- <div class="small-12 medium-6 columns">
-      <h3>Upcoming Events</h3>
-      <iframe class="google-events" src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=200&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8%40group.calendar.google.com&amp;color=%235F6B02&amp;ctz=Europe%2FLondon" style=" border-width:0 " width="100%" height="280" frameborder="0" scrolling="no"></iframe>
-      <p class="text-right"><a href="{{site.base}}/events/">More Events...</a></p>
+</section>
+<section class="upcoming-events">
+    <div class="row">
+        <div class="small-12 medium-6 columns">
+            <h3>Location</h3>
+            {% include gmap.html %}
+        </div>
+         <div class="small-12 medium-6 columns">
+              <h3>Upcoming Events</h3>
+            {% include gcalendar.html %}
 
-  </div>
+          </div>
 
-</div>
+    </div>
+</section>
 
 <script src="{{site.base}}/assets/js/rss_parse.js"></script>
 <script src="{{site.base}}/assets/js/jquery-feeds.min.js"></script>

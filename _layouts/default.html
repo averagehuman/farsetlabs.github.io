@@ -144,7 +144,7 @@
           </div>
           {% endif %}
 
-        <section id="page-content" class="content">
+        <div id="page-content" class="content">
             <div class="row">
                 <div class="small-12 columns">
                   {% if page.toc %}
@@ -155,10 +155,24 @@
                     </dd>
                   </dl>
                   {% endif %}
-                                       {{content}}
+                  {% if page.carousel %}
+                       {{content}}
+                  {% else %}
+                  <div class="inner">
+                      <div class="row">
+                          <div class="small-12 medium-9 columns">
+                            {{content}}
+                          </div>
+                            <div class="medium-3 columns hide-for-small-only">
+                                <aside>
+                                    {% if page.url != '/events/' %} {% include gcalendar.html %} {% endif %}
+                                </aside>
+                            </div>
+                  </div>
+                  {% endif %}
                 </div>
             </div>
-        </section>
+        </div>
     </div>
     <!-- end page-body -->
     <!-- page-footr -->
@@ -171,15 +185,13 @@
             </div>
         </div>
         <div class="row contact">
-            <div class="small-12 medium-5 columns">
-                <div>
+            <div class="small-6 medium-6 large-4 columns">
                 <i class="ico fi-telephone"></i> <p>UK: <a href="tel:+448458694618">+44 845 869 4619</a></p>
-                </div>
-                <div>
-                <i class="ico fi-mail"></i> <p><a mailto="info@farsetlabs.org.uk">info@farsetlabs</a></p>
-                </div>
             </div>
-            <div class="small-12 medium-7 columns">
+            <div class="small-6 medium-6 large-4 columns">
+                <i class="ico fi-mail"></i> <p><a mailto="info@farsetlabs.org.uk">info@farsetlabs.org.uk</a></p>
+            </div>
+            <div class="small-12 medium-12 large-4 columns">
                 <i class="ico fi-map"></i>
                 <address>
                   Farset Labs<br>

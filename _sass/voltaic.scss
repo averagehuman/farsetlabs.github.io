@@ -66,8 +66,9 @@
 
 html, body {
     height:100%;
-    background: darken($theme-primary-color, 30%);
+    background: darken($theme-primary-color, 20%);
 }
+
 #page-wrapr {
     min-height:100%;
     position:relative;
@@ -78,16 +79,16 @@ html, body {
 }
 #page-body {
     padding: 0;
-    padding-bottom:500px;
+    padding-bottom:330px;
     background: #fff;
 }
 #page-footr {
     position:absolute;
     bottom:0;
     width:100%;
-    height:310px;
+    height:285px;
     padding: 0.2rem 0;
-    background: darken($theme-primary-color, 30%);
+    background: darken($theme-primary-color, 20%);
     color: $white;
     a, a:visited {
         color: $theme-secondary-color;
@@ -102,6 +103,10 @@ html, body {
         }
     }
     .contact {
+        a {
+            font-size: 110%;
+            font-weight: bold;
+        }
         .ico {
             font-size: 3.2rem;
             line-height: 1.1;
@@ -122,9 +127,12 @@ html, body {
         }
     }
     .epilogue {
-        background: #000;
+        background: darken($theme-primary-color, 35%);
         margin-top: 70px;
         .attribution {
+            p {
+                padding-top: 0.5rem;
+            }
             .icon-menu {
                 a {
                     font-size: 1.4rem;
@@ -186,6 +194,12 @@ html, body {
 }
 .content {
     position: relative;
+    .inner {
+        padding: 1.2rem 0 3rem;
+        a:not(.button) {
+            font-weight: bold;
+        }
+    }
 }
 
 .carousel-caption {
@@ -195,6 +209,7 @@ html, body {
 
 .flexslider {
     border: 0;
+    margin-bottom: 20px;
 
     .slides {
         img {
@@ -238,6 +253,10 @@ html, body {
     }
 }
 
+section {
+    margin: 3em 0;
+}
+
 .cards {
     .column {
         margin-bottom: 1rem;
@@ -247,6 +266,8 @@ html, body {
         height: 100%;
         margin-bottom: 1rem;
         border-radius: 4px;
+        background-color: #f9fef9;
+        background-color: ghostwhite;
         .card-hdr {
             background-color: $theme-primary-color;
             color: $white;
@@ -256,8 +277,15 @@ html, body {
         }
         
         .card-section {
-            padding-bottom: 20px;
+            padding-bottom: 40px;
             margin-bottom: 30px;
+            a, a:visited {
+                color: darken($theme-secondary-color, 15%);
+                text-decoration: underline;
+            }
+            a:hover {
+                color: darken($theme-secondary-color, 25%);
+            }
         }
         .card-footr {
             position: absolute;
